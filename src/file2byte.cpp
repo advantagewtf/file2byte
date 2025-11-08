@@ -40,8 +40,7 @@ int main(int argc, char* argv[]) {
     std::string varName = inFile.stem().string();
     for (auto &c : varName)
         if (!std::isalnum(static_cast<unsigned char>(c))) c = '_';
-
-    // 🆕 Get the file extension (without the dot)
+    
     std::string fileType = inFile.extension().string();
     if (!fileType.empty() && fileType[0] == '.') fileType.erase(0, 1);
 
@@ -58,7 +57,6 @@ int main(int argc, char* argv[]) {
 
     outFile << "const size_t " << varName << "_size = sizeof(" << varName << "_data);\n";
 
-    // 🆕 Store file type as a string
     outFile << "const char* " << varName << "_type = \"" << fileType << "\";\n";
 
     outFile.close();
@@ -66,3 +64,4 @@ int main(int argc, char* argv[]) {
     std::cout << "success thanks for using elli's tools <3 " << "\n";
     return 0;
 }
+
